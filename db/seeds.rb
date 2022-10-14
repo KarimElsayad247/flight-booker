@@ -6,6 +6,9 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+Flight.delete_all
+Airport.delete_all
+
 airports = Airport.create!([
   {code: "ATL", name: "Hartsfield–Jackson Atlanta International Airport"},
   {code: "DFW", name: "Dallas Fort Worth International Airport"},

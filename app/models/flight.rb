@@ -8,4 +8,17 @@ class Flight < ApplicationRecord
 
   validates :departure_airport_id, :arrival_airport_id, :start_datetime,
             :duration, presence: true
+
+  def self.start_dates
+    Flight.select(:start_datetime).distinct
+          .map {|flight| flight.start_datetime}
+  end
+
+  def self.search(search_params)
+    Flight.where(
+      departure_airport_id: search_params[:departure_airport],
+      arrival_airport_id: search_params[:arrival_airport],
+      start_datetime: search_params[:datetime]
+    )
+  end
 end

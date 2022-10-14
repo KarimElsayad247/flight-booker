@@ -1,3 +1,29 @@
 <h2>Flights</h2>
 
-<p>This is flights page</p>
+<h3>Search flights</h3>
+
+<%= form_with url:"/flights", method: :get do |form| %>
+
+  <div class="field">
+    <%= form.label :departure_airport, "Departure Airport" %>
+    <%= form.collection_select :departure_airport, @departure_airports, :id, :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :arrival_airport, "Arrival Airport" %>
+    <%= form.collection_select :arrival_airport, @arrival_airports, :id, :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :datetime, "Date and Time" %>
+    <%= form.select :datetime, options_for_select(@dates) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :num_passengers, "Number of Passengers" %>
+    <%= form.select :num_passengers, options_for_select(@num_passengers) %>
+  </div>
+  
+  <%= form.submit "Search Flight" %>
+
+<% end %>
