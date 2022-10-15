@@ -6,22 +6,26 @@
 
   <div class="field">
     <%= form.label :departure_airport, "Departure Airport" %>
-    <%= form.collection_select :departure_airport, @departure_airports, :id, :name %>
+    <%= form.collection_select :departure_airport, @departure_airports, :id, :name,
+                                selected: params[:departure_airport] %>
   </div>
 
   <div class="field">
     <%= form.label :arrival_airport, "Arrival Airport" %>
-    <%= form.collection_select :arrival_airport, @arrival_airports, :id, :name %>
+    <%= form.collection_select :arrival_airport, @arrival_airports, :id, :name,
+                               selected: params[:arrival_airport] %>
   </div>
 
   <div class="field">
     <%= form.label :datetime, "Date and Time" %>
-    <%= form.select :datetime, options_for_select(@dates) %>
+    <%= form.select :datetime,
+                    options_for_select(@dates, selected: params[:datetime]) %>
   </div>
 
   <div class="field">
     <%= form.label :num_passengers, "Number of Passengers" %>
-    <%= form.select :num_passengers, options_for_select(@num_passengers) %>
+    <%= form.select :num_passengers,
+                    options_for_select(@num_passengers, selected: params[:num_passengers]) %>
   </div>
   
   <%= form.submit "Search Flight" %>
