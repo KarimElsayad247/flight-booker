@@ -1,0 +1,24 @@
+h1, h2, h3 {
+    margin-top: 1rem;
+    margin-bottom: 0;
+}
+
+form {
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 1rem;
+    margin-top: 1rem;
+    background-color: var(--accent-bg);;
+}
+
+.form-header {
+    margin-bottom: 0.5rem;
+}
+
+form label {
+    font-weight: 600;
+}
+
+form select {
+    min-width: 40%;
+}
