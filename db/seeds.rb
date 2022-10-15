@@ -6,6 +6,8 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+require 'faker'
+
 Flight.delete_all
 Airport.delete_all
 
@@ -25,3 +27,13 @@ Flight.create!([
   {departure_airport: Airport.first, arrival_airport: Airport.second, start_datetime: Date.tomorrow + 1, duration: 8.hour},
   {departure_airport: Airport.third, arrival_airport: Airport.second, start_datetime: Date.tomorrow, duration: 8.hour},
 ])
+
+30.times do
+  airports = Airport.all.sample(2)
+  Flight.create([{
+    departure_airport: airports[0],
+    arrival_airport: airports[1],
+    start_datetime: Faker::Time.between(from: DateTime.now, to: DateTime.now + 7),
+    duration: Random.rand(1..8).hours,
+  }])
+end
