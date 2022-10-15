@@ -7,6 +7,7 @@ class FlightsController < ApplicationController
 
     if request.query_parameters.present?
       @flights = Flight.search(request.query_parameters)
+                       .includes(:departure_airport, :arrival_airport)
     end
   end
 end

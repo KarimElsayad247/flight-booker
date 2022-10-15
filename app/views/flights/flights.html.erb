@@ -1,8 +1,8 @@
 <h2>Flights</h2>
 
-<h3>Search flights</h3>
 
 <%= form_with url:"/flights", method: :get do |form| %>
+  <h3 class="form-header">Search flights</h3>
 
   <div class="field">
     <%= form.label :departure_airport, "Departure Airport" %>
@@ -27,3 +27,33 @@
   <%= form.submit "Search Flight" %>
 
 <% end %>
+
+<% unless @flights.nil? %>
+  <h3>Search results</h3>
+
+  <% if @flights.count.zero? %>
+    <p>There are no flights matching the required criteria</p>
+  <% end %>
+
+  <table>
+    <thead>
+    <tr>
+      <th>Departure Airport</th>
+      <th>Destination Airport</th>
+      <th>Date and Time</th>
+      <th>Duration</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @flights.each do |flight| %>
+      <tr>
+        <td><%= flight.departure_airport.code %></td>
+        <td><%= flight.arrival_airport.code %></td>
+        <td><%= flight.start_datetime %></td>
+        <td><%= distance_of_time_in_words(flight.duration) %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% end %>
+
