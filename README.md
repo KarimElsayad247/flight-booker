@@ -1,24 +1,11 @@
-# README
+# Flight Booker
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Search for a flight, and book a seat!
 
-Things you may want to cover:
+This was the most copmlicated Rails project thus far, it had me making use of nested forms, more complicated associations, and more complicated querying. 
 
-* Ruby version
+PS: It won't actually send an email. The flash message is just like that.
 
-* System dependencies
+## Demo
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+![flights](https://user-images.githubusercontent.com/43252094/196044425-78a7ddd7-a821-44d8-9841-b4166ea51877.gif)
