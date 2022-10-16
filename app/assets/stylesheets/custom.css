@@ -1,9 +1,13 @@
+body {
+    padding-bottom: 1rem;
+}
+
 h1, h2, h3 {
     margin-top: 1rem;
     margin-bottom: 0;
 }
 
-form {
+form, .section-container {
     border: 1px solid var(--border);
     border-radius: 5px;
     padding: 1rem;

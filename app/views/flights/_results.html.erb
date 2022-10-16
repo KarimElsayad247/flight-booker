@@ -21,6 +21,6 @@
     <% end %>
     </tbody>
   </table>
-  <%= form.hidden_field :num_passengers %>
+  <%= form.hidden_field :num_passengers, value: params[:num_passengers] %>
   <%= form.submit "Reserve seat" %>
 <% end %>
