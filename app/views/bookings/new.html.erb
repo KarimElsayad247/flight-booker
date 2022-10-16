@@ -1,42 +1,24 @@
-<h2>Reserve Seat</h2>
-<div class="section-container">
-  <h3>Flight Information</h3>
+<h2>Book Flight</h2>
 
-  <ul>
-    <li><p>
-      <strong>Departure Airport: </strong>
-      <%= @flight.departure_airport.name %>
-    </p></li>
-    <li><p>
-      <strong>Arrival Airport: </strong>
-      <%= @flight.arrival_airport.name %>
-    </p></li>
-    <li><p>
-      <strong>Date and Time: </strong>
-      <%= @flight.start_datetime %>
-    </p></li>
-    <li><p>
-      <strong>Duration </strong>
-      <%= @flight.duration %>
-    </p></li>
-  </ul>
-</div>
+<%= render partial: 'flight_information',
+           locals: {flight: @flight} %>
 
 <%= form_with model: @booking do |form|%>
   <h3>Passengers information</h3>
-  
-  <% @booking.passengers.each_with_index do |passenger, i|  %>
-    <%= form.fields_for passenger, index: i do |passenger_form| %>
 
-      <h4>Passenger <%= i + 1 %></h4>
+  <%= form.fields_for :passengers do |passenger_form| %>
 
+    <h4>Passenger <%= passenger_form.index + 1 %></h4>
+    <div class="field">
       <%= passenger_form.label :name, "Name" %>
       <%= passenger_form.text_field :name %>
-
+    </div>
+    <div class="field">
       <%= passenger_form.label :email, "Email" %>
       <%= passenger_form.email_field :email %>
-    <% end %>
+    </div>
   <% end %>
-  
+
+  <%= form.hidden_field :flight_id, value: @flight.id %>
   <%= form.submit %>
 <% end %>

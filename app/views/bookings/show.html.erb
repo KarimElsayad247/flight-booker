@@ -1,0 +1,10 @@
+<h2>Booking information</h2>
+
+<%= render partial: 'flight_information',
+           locals: {flight: @booking.flight} %>
+
+<div class="section-container">
+  <h3>Passengers</h3>
+  <%= render partial: 'bookings/passenger',
+             collection: @booking.passengers %>
+</div>

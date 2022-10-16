@@ -14,5 +14,6 @@
  * require_tree .
  *= require simple
  *= require custom
+ *= require flash
  *= require_self
  */

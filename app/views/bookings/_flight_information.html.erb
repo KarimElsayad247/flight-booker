@@ -1,0 +1,21 @@
+<div class="section-container">
+  <h3>Flight Information</h3>
+  <ul>
+    <li><p>
+      <strong>Departure Airport: </strong>
+      <%= flight.departure_airport.name %>
+    </p></li>
+    <li><p>
+      <strong>Arrival Airport: </strong>
+      <%= flight.arrival_airport.name %>
+    </p></li>
+    <li><p>
+      <strong>Date and Time: </strong>
+      <%= flight.start_datetime %>
+    </p></li>
+    <li><p>
+      <strong>Duration: </strong>
+      <%= distance_of_time_in_words(flight.duration) %>
+    </p></li>
+  </ul>
+</div>
