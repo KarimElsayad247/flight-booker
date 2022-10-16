@@ -37,27 +37,11 @@
 
   <% if @flights.count.zero? %>
     <p>There are no flights matching the required criteria</p>
+  <% else %>
+    <%= render partial: 'results',
+               locals: {flights: @flights,
+                        num_passengers: params[:num_passengers]}
+    %>
   <% end %>
-
-  <table>
-    <thead>
-    <tr>
-      <th>Departure Airport</th>
-      <th>Destination Airport</th>
-      <th>Date and Time</th>
-      <th>Duration</th>
-    </tr>
-    </thead>
-    <tbody>
-    <% @flights.each do |flight| %>
-      <tr>
-        <td><%= flight.departure_airport.code %></td>
-        <td><%= flight.arrival_airport.code %></td>
-        <td><%= flight.start_datetime %></td>
-        <td><%= distance_of_time_in_words(flight.duration) %></td>
-      </tr>
-    <% end %>
-    </tbody>
-  </table>
 <% end %>
 

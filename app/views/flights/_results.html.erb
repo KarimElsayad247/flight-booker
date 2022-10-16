@@ -1,0 +1,26 @@
+<%= form_with url:'/bookings/new', method: :get do |form| %>
+  <table>
+    <thead>
+    <tr>
+      <th>&nbsp;</th>
+      <th>Departure Airport</th>
+      <th>Destination Airport</th>
+      <th>Date and Time</th>
+      <th>Duration</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% flights.each do |flight| %>
+      <tr>
+        <td><%= form.radio_button :flight_id, flight.id %></td>
+        <td><%= flight.departure_airport.code %></td>
+        <td><%= flight.arrival_airport.code %></td>
+        <td><%= flight.start_datetime %></td>
+        <td><%= distance_of_time_in_words(flight.duration) %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+  <%= form.hidden_field :num_passengers %>
+  <%= form.submit "Reserve seat" %>
+<% end %>
