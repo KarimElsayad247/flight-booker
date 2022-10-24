@@ -16,6 +16,10 @@ class BookingsController < ApplicationController
     @booking = @flight.bookings.build(booking_params)
     if @booking.save
       flash[:notice] = "Booking complete! Please check your email"
+      @booking.passengers.each do |passenger|
+        PassengerMailer.with(passenger: passenger)
+                       .booking_mail.deliver_later
+      end
       redirect_to booking_path(@booking)
     else
       flash[:alert] = "Error booking"

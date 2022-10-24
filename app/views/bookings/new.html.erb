@@ -3,6 +3,22 @@
 <%= render partial: 'flight_information',
            locals: {flight: @flight} %>
 
+<%
+    name1 = "First Person"
+    mail1 = "first_person@example.com"
+
+    name2 = "Second Person"
+    mail2 = "second_person@example.com"
+
+    names = []
+    names << name1 << name2
+
+    mails = []
+    mails << mail1 << mail2
+%>
+
+
+
 <%= form_with model: @booking do |form|%>
   <h3>Passengers information</h3>
 
@@ -11,11 +27,11 @@
     <h4>Passenger <%= passenger_form.index + 1 %></h4>
     <div class="field">
       <%= passenger_form.label :name, "Name" %>
-      <%= passenger_form.text_field :name %>
+      <%= passenger_form.text_field :name, value: names[passenger_form.index] %>
     </div>
     <div class="field">
       <%= passenger_form.label :email, "Email" %>
-      <%= passenger_form.email_field :email %>
+      <%= passenger_form.email_field :email, value: mails[passenger_form.index]%>
     </div>
   <% end %>
 
